@@ -4,7 +4,7 @@ from llama_index.core.tools import FunctionTool
 from llama_index.llms.groq import Groq
 import json
 
-llm = Groq(model="llama3-70b-8192", api_key="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")
+llm = Groq(model="llama3-70b-8192", api_key="")
 
 from typing import Dict, Optional
 from datetime import datetime
@@ -94,5 +94,6 @@ def combined_complaint_classifier(complaint: dict) -> dict:
 complaint_classifier_tool = FunctionTool.from_defaults(fn=combined_complaint_classifier)
 
 from llama_index.core.agent import ReActAgent, FunctionCallingAgentWorker
+
 
 react_agent = ReActAgent.from_tools(tools=[complaint_classifier_tool],llm=llm, verbose=True)
